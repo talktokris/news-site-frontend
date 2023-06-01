@@ -13,12 +13,12 @@ function Home(props) {
     <div className="container-fluid">
       <Container fluid>
         <Row>
+          <Col sm={3}>
+            <SideContainer />
+          </Col>
           <Col sm={9}>
             <SearchContainer />
             <NewsContainer data={DataNewsSet} />
-          </Col>
-          <Col sm={3}>
-            <SideContainer />
           </Col>
         </Row>
       </Container>

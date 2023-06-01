@@ -9,6 +9,7 @@
     --border-light-green:#4a8175;
     --heading-color:#241f21;
     --black:#000000;
+    --bs-border-color: #4a8175 !important
   }
  
   .header{
@@ -69,8 +70,45 @@
 
 .search_container{
   /*  background-color: var(--green);*/
-  background-color: var(--light-yellow) !important
+ /* background-color: var(--light-yellow) !important */
+margin-top:10px;
+/* border-bottom: 1px solid var(--border-light-green);
+/* background-color: var(--light-yellow) !important; */
+border-radius: 5px;
+
+padding: 10px;
+text-align: center;
 }
+.search_container h1{
+  color: var(--black);
+  font-weight: 800;
+
+}
+.search_container p{
+  color: var(--green) !important;
+}
+.filter-form-group{
+  padding: 15px;
+}
+.search-filter-card{
+  margin-top: 20px;
+  border-color: var(--border-light-green) !important
+}
+.search-filter-card .card-header{
+  background-color: var(--green);
+  color: var(--light-green);
+}
+.news-results{
+  margin-left: -5px !important;
+  text-align: center;
+}
+.search-btn-home{
+  padding: 8px 50px 8px 50px !important;
+  color: var(--light-green) !important;
+  border-color: var(--light-green) !important;
+
+}
+
 .news-card{
     background-color: var(--mute-green) !important;
     margin:5px;
@@ -105,6 +143,10 @@
 .news-card-footer{
     padding: 5px !important;
     background-color: #e8f9f1 !important
+}
+.home-welcome-text{
+  text-align: center;
+  margin: 10px;
 }
 
 
@@ -156,4 +198,21 @@
     color: red;
     font-weight: bolder;
     margin-bottom: 20px !important
+  }
+
+  /*----- Account Page ----- */
+  .account-switch{
+    color: red !important;
+
+  }
+  .account-box-title{
+    color: var(--green);
+    padding-left: 10px;
+    font-weight: bolder;
+    margin-top: 25px;
+  }
+  .accunt-setting{
+    text-align: center;
+    padding-top: 20px;
+    border-bottom: 1px solid #eee;
   }

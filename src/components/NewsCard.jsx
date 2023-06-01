@@ -9,7 +9,7 @@ function minText(text, count) {
 function NewsCard({ data }) {
   console.log(data);
   return (
-    <Row>
+    <Row className="news-results">
       {data.map((item) => (
         <Card className="news-card" style={{ width: "20rem" }}>
           <Card.Img

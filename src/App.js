@@ -13,7 +13,7 @@ function App() {
     <>
       <NavBar />
       <main className="container-fluid">
-        <Account />
+        <Home />
         {/* 
         <Account />
         <Login />
