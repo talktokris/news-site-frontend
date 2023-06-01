@@ -5,9 +5,17 @@ import Col from "react-bootstrap/Col";
 
 function Footer(props) {
   return (
-    <Container>
+    <Container className="footer" fluid>
       <Row>
-        <Col>Footer</Col>
+        <Col>
+          <div className="copyright">
+            &copy; Copyright{" "}
+            <strong>
+              <span>Digiloka</span>
+            </strong>
+            . All Rights Reserved
+          </div>{" "}
+        </Col>
       </Row>
     </Container>
   );

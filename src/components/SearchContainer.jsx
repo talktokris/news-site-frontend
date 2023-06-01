@@ -9,6 +9,11 @@ function SearchContainer(props) {
     <Container className="search_container">
       <Row>
         <Col>
+          <div>
+            <h2>News Agency</h2>
+            <p>News Magazine & Blog Responsive HTML5 Template</p>
+          </div>
+
           <SearchForm />
         </Col>
       </Row>

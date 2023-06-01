@@ -5,14 +5,29 @@ import Col from "react-bootstrap/Col";
 import SideBar from "../common/SideBar";
 
 function SideContainer(props) {
+  const newsList = [
+    { id: 1, name: "BBC News" },
+    { id: 2, name: "ABP News" },
+    { id: 3, name: "New Your Times" },
+    { id: 4, name: "The Guardian" },
+    { id: 5, name: "CNN News" },
+    { id: 6, name: "CNBC News" },
+  ];
+
+  const catList = [
+    { id: 1, name: "Travel" },
+    { id: 2, name: "Health" },
+    { id: 3, name: "Science" },
+    { id: 4, name: "Food" },
+    { id: 5, name: "Life Style" },
+    { id: 6, name: "Movies" },
+  ];
   return (
-    <Container className="search_container">
+    <Container className="">
       <Row>
         <Col>
-          <div className="side-bar-header">
-            <h5>News Sources</h5>
-          </div>
-          <SideBar />
+          <SideBar title="News Sources" listData={newsList} />
+          <SideBar title="News Category" listData={catList} />
         </Col>
       </Row>
     </Container>

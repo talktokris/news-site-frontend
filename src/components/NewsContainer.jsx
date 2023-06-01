@@ -1,10 +1,10 @@
 import React from "react";
-import SearchForm from "./SearchForm";
+import NewsCard from "./NewsCard";
 
-function NewsContainer(props) {
+function NewsContainer({ data }) {
   return (
     <div>
-      <SearchForm />
+      <NewsCard data={data} />
     </div>
   );
 }

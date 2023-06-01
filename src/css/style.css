@@ -1,3 +1,159 @@
+
+
+:root {
+    --green: #085753;
+    --light-green: #adf2ca;
+    --light-yellow: #fdf5df;
+    --yellow-green: #25e0a0;
+    --mute-green:#e8f9f1;
+    --border-light-green:#4a8175;
+    --heading-color:#241f21;
+    --black:#000000;
+  }
+ 
+  .header{
+    background-color: var(--green);
+    color:var(--light-yellow);
+    border-bottom: 1px solid var(--light-yellow);
+ 
+  }
+  .footer{
+    padding: 20px;
+    margin-top: 20px;
+    background-color: var(--green);
+    color:var(--light-yellow);
+    border-top: 1px solid var(--light-yellow);
+    text-align: center;
+    position: relative;
+    bottom:0;
+    left:0;
+
+  }
+  .copyrignt{
+    text-align: center;
+
+  }
+  .brand-logo{
+    max-width: 200px;
+  }
+  .navbar-brand{
+    padding: 5px !important;
+  
+  }
+
+  
+  .btn-login{
+    margin: 10px !important;
+    padding: 8px 40px 8px 40px !important;
+    color: var(--light-green) !important;
+    border-color: var(--light-green) !important;
+  }
+  .btn-login:hover{
+    background-color: var(--yellow-green) !important;
+    color: var(--green) !important;
+  }
+
+  .btn-register{
+    margin: 10px !important;
+    padding: 8px 40px 8px 40px !important;
+    color: var(--green) !important;
+    border-color: var(--light-yellow) !important;
+    background-color: var(--light-yellow) !important
+  }
+  .btn-register:hover{
+    background-color: var(--yellow-green) !important;
+
+  }
+
+
+
 .search_container{
-    background-color: red;
+  /*  background-color: var(--green);*/
+  background-color: var(--light-yellow) !important
 }
+.news-card{
+    background-color: var(--mute-green) !important;
+    margin:5px;
+    border-color: var(--border-light-green) !important;
+    padding: 10px ;
+}
+
+.img-center-cropped {
+    width: 200px;
+    height: 200px;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.news-card-body{
+    padding: 0px !important;
+}
+.news-card-body-title{
+    padding-top:5px;
+   
+
+}
+.news-card-body-text{
+    padding-top:5px;
+
+}
+.mt-left{
+    float: left;
+}
+.mt-right{
+    float: right;
+}
+.news-card-footer{
+    padding: 5px !important;
+    background-color: #e8f9f1 !important
+}
+
+
+
+/* --- Login Page ---- */
+#container {
+    height:100%;
+ }
+.login-div{
+    position: relative;
+    min-height: 100% !important;
+    margin-bottom: 50px;
+    min-height: 500px !important
+
+}
+.register-div{
+    overflow: scroll;
+
+}
+.clear { clear: both; height: 60px; }
+
+
+.login-card{
+    background-color: var(--mute-green) !important;
+    margin-top:20px;
+    border-color: var(--border-light-green) !important;
+    padding: 10px ;
+
+}
+
+.btn-signin{
+    margin-top: 20px !important;
+    padding: 8px 40px 8px 40px !important;
+    color: var(--light-green) !important;
+    border-color: var(--light-green) !important;
+    background-color: var(--green) !important;
+    width: 100%;
+    
+  }
+  .btn-signin:hover{
+    background-color: var(--yellow-green) !important;
+    color: var(--green) !important;
+  }
+  .login-form-header{
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .error-msg{
+    color: red;
+    font-weight: bolder;
+    margin-bottom: 20px !important
+  }
