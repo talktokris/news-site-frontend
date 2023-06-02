@@ -7,7 +7,6 @@ function minText(text, count) {
 }
 
 function NewsCard({ data }) {
-  console.log(data);
   return (
     <Row className="news-results">
       {data.map((item) => (

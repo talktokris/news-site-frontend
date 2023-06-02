@@ -24,4 +24,5 @@ yarn-error.log*
 
 #kris
 /src/old
+/src/services
 /src/App_bkp.js

@@ -42,6 +42,17 @@
   
   }
 
+
+  .navlink{
+    font-size: medium !important;
+    font-weight: 500 !important;
+    color: var(--light-green) !important;
+    margin-left: 50px;
+    text-transform: capitalize !important;
+    padding: 10px;
+    border-bottom: 2px solid var(--light-yellow) !important;
+  }
+
   
   .btn-login{
     margin: 10px !important;
@@ -65,6 +76,26 @@
     background-color: var(--yellow-green) !important;
 
   }
+  .btn-account{
+
+    margin: 10px !important;
+    padding: 8px 40px 8px 40px !important;
+    border-color: var(--light-yellow) !important;
+   
+
+  }
+  .btn-account:hover{
+    background-color: var(-green) !important;
+    border-color: var(--light-yellow) !important;
+  }
+  .dropdown{
+    border-color: var(--light-yellow) !important;
+  }
+
+  .dropdown-item.active, .dropdown-item:active {
+    color: var(--green) !important;
+    background-color: #eeeeee !important;
+}
 
 
 
@@ -127,8 +158,12 @@ text-align: center;
 }
 .news-card-body-title{
     padding-top:5px;
-   
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+}
 
+.card-text{
+  font-size: 0.9rem !important;
 }
 .news-card-body-text{
     padding-top:5px;
