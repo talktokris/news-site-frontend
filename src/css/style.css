@@ -96,6 +96,31 @@
     color: var(--green) !important;
     background-color: #eeeeee !important;
 }
+.pagging-container{
+  text-align: center !important;
+}
+.pagination{
+  text-align: center !important;
+  justify-content: center;
+  padding: 30px;
+}
+.pagination li a{
+  color:var(--green);
+}
+.pagination li a:hover{
+  color:var(--green);
+  background: var(--yellow-green);
+}
+.pagination li a:active{
+  background: var(--yellow-green);
+
+}
+.pagination>li.active>a {
+  background: var(--green);
+  color: #fff;
+  border-color: var(--green);
+}
+
 
 
 
@@ -171,9 +196,16 @@ text-align: center;
 }
 .mt-left{
     float: left;
+
 }
 .mt-right{
     float: right;
+    font-size: 0.8em !important;
+    color: var(--green) !important;
+    font-weight: 500;
+}
+.card-footer {
+  padding: 0 !important;
 }
 .news-card-footer{
     padding: 5px !important;

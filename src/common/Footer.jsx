@@ -11,7 +11,7 @@ function Footer(props) {
           <div className="copyright">
             &copy; Copyright{" "}
             <strong>
-              <span>Digiloka</span>
+              <span>ClickNews</span>
             </strong>
             . All Rights Reserved
           </div>{" "}

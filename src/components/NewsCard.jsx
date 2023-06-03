@@ -1,9 +1,16 @@
 import { Container } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
+import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import no_images from "../no_image.jpg";
 
 function minText(text, count) {
   return text.slice(0, count) + (text.length > count ? "..." : "");
+}
+
+function setImages(path) {
+  if (path == "") return no_images;
+  return path;
 }
 
 function NewsCard({ data }) {
@@ -14,7 +21,7 @@ function NewsCard({ data }) {
           <Card.Img
             variant="top"
             className="img-center-cropped"
-            src={item.image}
+            src={setImages(item.image)}
           />
           <Card.Body className="news-card-body">
             <Card.Title className="news-card-body-title">
@@ -25,8 +32,11 @@ function NewsCard({ data }) {
             </Card.Text>
           </Card.Body>
           <Card.Footer className="newsCard">
-            <small className="text-muted mt-left">3 mins ago</small>
-            <small className="text-muted mt-right">Krishna Jha</small>
+            <small className="text-muted mt-left">{item.source}</small>
+            <small className="text-muted mt-right">{item.date_human}</small>
+          </Card.Footer>
+          <Card.Footer className="newsCard">
+            <small className="text-muted mt-right"> {item.authorName}</small>
           </Card.Footer>
         </Card>
       ))}

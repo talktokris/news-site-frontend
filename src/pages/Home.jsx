@@ -6,15 +6,25 @@ import Col from "react-bootstrap/Col";
 import SearchContainer from "../components/SearchContainer";
 import SideContainer from "../components/SideContainer";
 import NewsContainer from "../components/NewsContainer";
-import { DataNewsSet } from "../data.js";
+// import { DataNewsSet } from "../data.js";
 import Pagination from "../components/Pagination";
 
 import { paginate } from "../utils/paginate";
+import newsService from "../services/newsService";
 
 function Home(props) {
   const [data, setData] = useState([]);
+  const [currentData, setCurrentData] = useState([]);
   const [pageSize, setPageSize] = useState(9);
   const [currentPage, setCurrentPage] = useState(1);
+  const [newsSources, setNewsSources] = useState([]);
+  const [newsCategories, setNewsCategories] = useState([]);
+  const [newsDates, setNewsDates] = useState([]);
+  const [newsAuthors, setNewsAuthers] = useState([]);
+  const [currentSource, setCurrentSource] = useState([]);
+  const [currentCategory, setCurrentCategory] = useState([]);
+  const [currentAuthor, setCurrentAuthor] = useState([]);
+  const [currentDate, setCurrentDate] = useState([]);
   /*
   const [allValues, setAllValues] = useState({
     data: "",
@@ -33,33 +43,80 @@ function Home(props) {
   }, []);
 
   const fatchData = async () => {
-    setData(DataNewsSet);
+    const response = await newsService.getNews();
+    setData(response.newsData);
+    setCurrentData(response.newsData);
+    setNewsSources(response.filterSettings.sources);
+    setNewsCategories(response.filterSettings.categories);
+    setNewsDates(response.filterDates);
+    setNewsAuthers(response.filterSettings.authors);
   };
-
-  // console.log(data);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
     // console.log(page);
   };
 
-  const movies = paginate(data, currentPage, pageSize);
+  function onSourceFilter(value) {
+    setCurrentSource(value);
+  }
+
+  function onCategoryFilter(value) {
+    setCurrentCategory(value);
+  }
+
+  function onAuthorFilter(value) {
+    setCurrentAuthor(value);
+  }
+
+  function onDateFilter(value) {
+    setCurrentDate(value);
+  }
+  function getPageData() {
+    let filtered = data;
+    console.log(data);
+    if (currentSource != "")
+      filtered = data.filter((n) => n.source === currentSource);
+    if (currentCategory != "")
+      filtered = filtered.filter((n) => n.categoryName === currentCategory);
+    if (currentAuthor != "")
+      filtered = filtered.filter((n) => n.authorName === currentAuthor);
+
+    if (currentDate != "")
+      filtered = filtered.filter((n) => n.date_human === currentDate);
+
+    return filtered;
+  }
+
+  const filteded = getPageData();
+  const newNewsData = paginate(filteded, currentPage, pageSize);
   return (
     <div className="container-fluid">
       <Container fluid>
         <Row>
           <Col sm={3}>
-            <SideContainer />
+            <SideContainer
+              authors={newsAuthors}
+              sources={newsSources}
+              categories={newsCategories}
+              dates={newsDates}
+              onSourceFilter={onSourceFilter}
+              onCategoryFilter={onCategoryFilter}
+              onAuthorFilter={onAuthorFilter}
+              onDateFilter={onDateFilter}
+            />
           </Col>
           <Col sm={9}>
             <SearchContainer />
-            <NewsContainer data={movies} />
-            <Pagination
-              itemsCount={data.length}
-              pageSize={pageSize}
-              currentPage={currentPage}
-              onPageChange={handlePageChange}
-            />
+            <NewsContainer data={newNewsData} />
+            <Col className="pagging-container">
+              <Pagination
+                itemsCount={data.length}
+                pageSize={pageSize}
+                currentPage={currentPage}
+                onPageChange={handlePageChange}
+              />
+            </Col>
           </Col>
         </Row>
       </Container>
