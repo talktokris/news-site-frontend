@@ -8,7 +8,7 @@ import Card from "react-bootstrap/Card";
 
 import auth from "../services/authService";
 
-function Register(props) {
+function Register({ loaderRun }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -51,8 +51,9 @@ function Register(props) {
     validateValues(name, email, password, repassword);
 
     if (errors === "") {
+      loaderRun(true);
       const data = await auth.register(name, email, password, repassword);
-
+      loaderRun(false);
       if (data.success === false) {
         setErrors("Form validation error");
       }

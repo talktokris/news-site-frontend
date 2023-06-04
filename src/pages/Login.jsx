@@ -15,7 +15,7 @@ import auth from "../services/authService";
 //import axios from "axios";
 import { create } from "apisauce";
 
-function Login(props) {
+function Login({ loaderRun }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState("");
@@ -67,10 +67,13 @@ function Login(props) {
 */
   async function handleSubmit(event) {
     event.preventDefault();
+
     validateValues(email, password);
 
     if (errors === "") {
+      loaderRun(true);
       const data = await auth.login(email, password);
+      loaderRun(false);
 
       if (data.success === false) {
         setErrors("Username or Password Incorrect");

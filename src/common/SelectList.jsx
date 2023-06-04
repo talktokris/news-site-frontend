@@ -21,7 +21,7 @@ function SelectList({ label, name, options, value = "", onChange }) {
         onChange={(e) => handleChange(e.target.value, setSelectedOption)}
       >
         {newOptions.map((option) => (
-          <option key={option.id} value={option.name}>
+          <option key={option.id + option.name} value={option.name}>
             {option.label}
           </option>
         ))}

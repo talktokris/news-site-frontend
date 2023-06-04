@@ -4,10 +4,10 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import SearchForm from "./SearchForm";
 
-function SearchContainer(props) {
+function SearchContainer({ onSearch }) {
   return (
     <Container className="search_container">
-      <SearchForm />
+      <SearchForm onSearch={onSearch} />
     </Container>
   );
 }

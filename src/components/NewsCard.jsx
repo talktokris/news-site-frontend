@@ -1,4 +1,4 @@
-import { Container } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
@@ -13,11 +13,15 @@ function setImages(path) {
   return path;
 }
 
-function NewsCard({ data }) {
+function NewsCard({ data, handleShow }) {
   return (
     <Row className="news-results">
       {data.map((item) => (
-        <Card className="news-card" style={{ width: "20rem" }}>
+        <Card
+          key={item.id + item.link}
+          className="news-card"
+          style={{ width: "20rem" }}
+        >
           <Card.Img
             variant="top"
             className="img-center-cropped"
@@ -38,6 +42,7 @@ function NewsCard({ data }) {
           <Card.Footer className="newsCard">
             <small className="text-muted mt-right"> {item.authorName}</small>
           </Card.Footer>
+          <Button onClick={() => handleShow("lg-down", item)}>More</Button>
         </Card>
       ))}
     </Row>

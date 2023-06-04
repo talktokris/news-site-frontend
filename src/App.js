@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { SpinnerRoundOutlined } from "spinners-react";
 //import logo from './logo.svg';
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -12,9 +13,11 @@ import Register from "./pages/Register";
 import Account from "./pages/Account";
 import auth from "./services/authService";
 import Logout from "./components/Logout";
+import Loader from "./pages/Loader";
 
 function App() {
   const [user, setUser] = useState("");
+  const [showLoader, setShowLoader] = useState(false);
 
   useEffect(() => {
     restoreUser();
@@ -24,17 +27,24 @@ function App() {
     const user = await auth.getCurrentUser();
     if (user) setUser(user);
   };
+  function loaderRun(value) {
+    setShowLoader(value);
+  }
 
   return (
     <>
+      {showLoader && <Loader />}
       <NavBar user={user} />
       <main className="container-fluid">
         <Routes>
-          <Route path="/home" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/account" element={<Account />} />
-          <Route path="/logout" element={<Logout />} />
+          <Route path="/home" element={<Home loaderRun={loaderRun} />} />
+          <Route path="/login" element={<Login loaderRun={loaderRun} />} />
+          <Route
+            path="/register"
+            element={<Register loaderRun={loaderRun} />}
+          />
+          <Route path="/account" element={<Account loaderRun={loaderRun} />} />
+          <Route path="/logout" element={<Logout loaderRun={loaderRun} />} />
           <Route path="/" element={<Navigate to="home" />} />
         </Routes>
       </main>

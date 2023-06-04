@@ -12,9 +12,8 @@ import Pagination from "../components/Pagination";
 import { paginate } from "../utils/paginate";
 import newsService from "../services/newsService";
 
-function Home(props) {
+function Home({ loaderRun }) {
   const [data, setData] = useState([]);
-  const [currentData, setCurrentData] = useState([]);
   const [pageSize, setPageSize] = useState(9);
   const [currentPage, setCurrentPage] = useState(1);
   const [newsSources, setNewsSources] = useState([]);
@@ -43,19 +42,38 @@ function Home(props) {
   }, []);
 
   const fatchData = async () => {
+    loaderRun(true);
     const response = await newsService.getNews();
     setData(response.newsData);
-    setCurrentData(response.newsData);
     setNewsSources(response.filterSettings.sources);
     setNewsCategories(response.filterSettings.categories);
     setNewsDates(response.filterDates);
     setNewsAuthers(response.filterSettings.authors);
+    loaderRun(false);
   };
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
     // console.log(page);
   };
+
+  async function onSearch(query) {
+    loaderRun(true);
+    //  const response = await newsService.getNews();
+    //console.log(event);
+    const response = await newsService.searchNews(query);
+    // console.log(response);
+
+    setData(response.newsData);
+    setNewsSources(response.filterSettings.sources);
+    setNewsCategories(response.filterSettings.categories);
+    setNewsDates(response.filterDates);
+    setNewsAuthers(response.filterSettings.authors);
+
+    // setData(limit);
+    // console.log(limit);
+    loaderRun(false);
+  }
 
   function onSourceFilter(value) {
     setCurrentSource(value);
@@ -74,7 +92,7 @@ function Home(props) {
   }
   function getPageData() {
     let filtered = data;
-    console.log(data);
+    // console.log(data);
     if (currentSource != "")
       filtered = data.filter((n) => n.source === currentSource);
     if (currentCategory != "")
@@ -107,7 +125,7 @@ function Home(props) {
             />
           </Col>
           <Col sm={9}>
-            <SearchContainer />
+            <SearchContainer onSearch={onSearch} />
             <NewsContainer data={newNewsData} />
             <Col className="pagging-container">
               <Pagination
