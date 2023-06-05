@@ -47,7 +47,7 @@ function Account({ loaderRun, user }) {
     console.log(source);
     loaderRun(true);
     const data = await accountService.saveUserSetting(source, "source");
-    console.log(data);
+    // console.log(data);
     loaderRun(false);
     if (data == null) setSourceErrors("Unknown eror");
     else {

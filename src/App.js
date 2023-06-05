@@ -39,7 +39,10 @@ function App() {
       <NavBar user={user} />
       <main className="container-fluid">
         <Routes>
-          <Route path="/home" element={<Home loaderRun={loaderRun} />} />
+          <Route
+            path="/home"
+            element={<Home loaderRun={loaderRun} user={user} />}
+          />
           <Route path="/login" element={<Login loaderRun={loaderRun} />} />
           <Route
             path="/register"

@@ -12,7 +12,7 @@ import Pagination from "../components/Pagination";
 import { paginate } from "../utils/paginate";
 import newsService from "../services/newsService";
 
-function Home({ loaderRun }) {
+function Home({ loaderRun, user }) {
   const [data, setData] = useState([]);
   const [pageSize, setPageSize] = useState(9);
   const [currentPage, setCurrentPage] = useState(1);
@@ -43,13 +43,23 @@ function Home({ loaderRun }) {
 
   const fatchData = async () => {
     loaderRun(true);
-    const response = await newsService.getNews();
-    // console.log(response);
-    setData(response.newsData);
-    setNewsSources(response.filterSettings.sources);
-    setNewsCategories(response.filterSettings.categories);
-    setNewsDates(response.filterDates);
-    setNewsAuthers(response.filterSettings.authors);
+    const data = await newsService.getNews();
+    if (data != null) {
+      // console.log(data);
+      const { filterDates, filterSettings, newsData } = data;
+      // console.log(filterDates);
+      if (newsData) {
+        setData(newsData);
+      }
+      if (filterDates) {
+        setNewsDates(filterDates);
+      }
+      if (filterSettings) {
+        setNewsSources(filterSettings.sources);
+        setNewsCategories(filterSettings.categories);
+        setNewsAuthers(filterSettings.authors);
+      }
+    }
     loaderRun(false);
   };
 
@@ -59,20 +69,21 @@ function Home({ loaderRun }) {
 
   async function onSearch(query) {
     loaderRun(true);
-    //  const response = await newsService.getNews();
-    //console.log(event);
-    const response = await newsService.searchNews(query);
-    // console.log(response);
 
-    setData(response.newsData);
-    setNewsSources(response.filterSettings.sources);
-    setNewsCategories(response.filterSettings.categories);
-    setNewsDates(response.filterDates);
-    setNewsAuthers(response.filterSettings.authors);
+    const result = await newsService.searchNews(query);
+    loaderRun(false);
+    setData(result);
+    // console.log(result);
+    if (result.status) {
+      setData(result.newsData);
+      setNewsSources(result.filterSettings.sources);
+      setNewsCategories(result.filterSettings.categories);
+      setNewsDates(result.filterDates);
+      setNewsAuthers(result.filterSettings.authors);
+    }
 
     // setData(limit);
     // console.log(limit);
-    loaderRun(false);
   }
   function resetPage() {
     setCurrentPage(1);

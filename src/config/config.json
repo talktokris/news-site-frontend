@@ -1,3 +1,4 @@
 {
-    "apiUrl": "http://localhost/projects/news_site/backend/news_backend/public/api"
+    "apiUrl": "http://localhost/projects/news_site/backend/news_backend/public/api",
+    "tokenKey": "token"
 }
