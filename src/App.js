@@ -27,7 +27,6 @@ function App() {
     const user = await auth.getCurrentUser();
     if (user) setUser(user);
 
-    //console.log(user);
   };
   function loaderRun(value) {
     setShowLoader(value);

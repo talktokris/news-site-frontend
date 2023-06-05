@@ -66,8 +66,6 @@ function Register({ loaderRun }) {
         window.location.reload();
         window.location = "/";
       }
-      //  console.log(data);
-      // console.log(email + "-" + password);
     }
   }
   return (

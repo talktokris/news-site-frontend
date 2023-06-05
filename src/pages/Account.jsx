@@ -59,8 +59,6 @@ function Account({ loaderRun, user }) {
         setFetch(true);
       }
     }
-
-    // console.log(email + "-" + password);
   }
 
   async function handleCategorySubmit(event) {
@@ -103,9 +101,6 @@ function Account({ loaderRun, user }) {
         setFetch(true);
       }
     }
-
-    //  console.log(data);
-    // console.log(email + "-" + password);
   }
   async function sourceDelete(item) {
     console.log(item);

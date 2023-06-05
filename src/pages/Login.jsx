@@ -6,15 +6,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 import { useParams, useNavigate } from "react-router-dom";
-//import httpService from "../services/httpService";
-
-//import Joi from "joi-browser";
-//import Form from "../common/Form";
-
 import auth from "../services/authService";
-//import axios from "axios";
-import { create } from "apisauce";
-
 function Login({ loaderRun }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -45,33 +37,13 @@ function Login({ loaderRun }) {
       /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     );
   };
-  /*
-  const handleChange = (e) => {
-    setInputFields({ ...inputFields, [e.target.name]: e.target.value });
-  };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setErrors(validateValues(inputFields));
-    setSubmitting(true);
-  };
-
-  const finishSubmit = () => {
-    console.log(inputFields);
-  };
-  useEffect(() => {
-    if (Object.keys(errors).length === 0 && submitting) {
-      finishSubmit();
-    }
-  }, [errors]);
-*/
   async function handleSubmit(event) {
     event.preventDefault();
 
     validateValues(email, password);
 
     if (errors === "") {
-      loaderRun(true);
       const data = await auth.login(email, password);
       loaderRun(false);
 
@@ -82,8 +54,6 @@ function Login({ loaderRun }) {
         window.location.reload();
         window.location = "/";
       }
-      //  console.log(data);
-      // console.log(email + "-" + password);
     }
   }
   return (

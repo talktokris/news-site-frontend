@@ -6,7 +6,6 @@ import Col from "react-bootstrap/Col";
 import SearchContainer from "../components/SearchContainer";
 import SideContainer from "../components/SideContainer";
 import NewsContainer from "../components/NewsContainer";
-// import { DataNewsSet } from "../data.js";
 import Pagination from "../components/Pagination";
 
 import { paginate } from "../utils/paginate";
@@ -24,18 +23,6 @@ function Home({ loaderRun, user }) {
   const [currentCategory, setCurrentCategory] = useState([]);
   const [currentAuthor, setCurrentAuthor] = useState([]);
   const [currentDate, setCurrentDate] = useState([]);
-  /*
-  const [allValues, setAllValues] = useState({
-    data: "",
-    // genres: [],
-    pageSize: 10,
-    currentPage: 1,
-    //selectedGenre: "",
-    //sortColumn: { path: "title", order: "asc" },
-    //searchQuery: "",
-  });
-  */
-  //setData(5);
 
   useEffect(() => {
     fatchData();
@@ -81,9 +68,6 @@ function Home({ loaderRun, user }) {
       setNewsDates(result.filterDates);
       setNewsAuthers(result.filterSettings.authors);
     }
-
-    // setData(limit);
-    // console.log(limit);
   }
   function resetPage() {
     setCurrentPage(1);
