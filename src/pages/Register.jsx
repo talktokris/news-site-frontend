@@ -15,7 +15,12 @@ function Register({ loaderRun }) {
   const [repassword, setRepassword] = useState("");
   const [errors, setErrors] = useState("");
   function buttonDisable() {
-    return email.length > 0 && password.length > 0;
+    return (
+      name.length > 0 &&
+      email.length > 0 &&
+      password.length > 0 &&
+      repassword.length > 0
+    );
   }
 
   const validateValues = async (name, email, password, repassword) => {
@@ -26,7 +31,7 @@ function Register({ loaderRun }) {
       errors = "Email is too short";
       if (validateEmail(email)) {
       } else {
-        errors = email + " is invalid.";
+        errors = "Email address is invalid.";
       }
     } else if (password.length < 5) {
       errors = "Password is too short";

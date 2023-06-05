@@ -44,6 +44,7 @@ function Home({ loaderRun }) {
   const fatchData = async () => {
     loaderRun(true);
     const response = await newsService.getNews();
+    // console.log(response);
     setData(response.newsData);
     setNewsSources(response.filterSettings.sources);
     setNewsCategories(response.filterSettings.categories);
@@ -54,7 +55,6 @@ function Home({ loaderRun }) {
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
-    // console.log(page);
   };
 
   async function onSearch(query) {
@@ -74,21 +74,28 @@ function Home({ loaderRun }) {
     // console.log(limit);
     loaderRun(false);
   }
+  function resetPage() {
+    setCurrentPage(1);
+  }
 
   function onSourceFilter(value) {
     setCurrentSource(value);
+    resetPage();
   }
 
   function onCategoryFilter(value) {
     setCurrentCategory(value);
+    resetPage();
   }
 
   function onAuthorFilter(value) {
     setCurrentAuthor(value);
+    resetPage();
   }
 
   function onDateFilter(value) {
     setCurrentDate(value);
+    resetPage();
   }
   function getPageData() {
     let filtered = data;
@@ -126,10 +133,10 @@ function Home({ loaderRun }) {
           </Col>
           <Col sm={9}>
             <SearchContainer onSearch={onSearch} />
-            <NewsContainer data={newNewsData} />
+            <NewsContainer data={newNewsData} totalResult={filteded} />
             <Col className="pagging-container">
               <Pagination
-                itemsCount={data.length}
+                itemsCount={filteded.length}
                 pageSize={pageSize}
                 currentPage={currentPage}
                 onPageChange={handlePageChange}

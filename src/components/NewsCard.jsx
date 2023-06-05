@@ -32,7 +32,7 @@ function NewsCard({ data, handleShow }) {
               {item.title}
             </Card.Title>
             <Card.Text className="news-card-body-text">
-              {minText(item.content, 110)}
+              {minText(item.content, 120)}
             </Card.Text>
           </Card.Body>
           <Card.Footer className="newsCard">
@@ -42,7 +42,12 @@ function NewsCard({ data, handleShow }) {
           <Card.Footer className="newsCard">
             <small className="text-muted mt-right"> {item.authorName}</small>
           </Card.Footer>
-          <Button onClick={() => handleShow("lg-down", item)}>More</Button>
+          <Button
+            className="btn-signin"
+            onClick={() => handleShow("lg-down", item)}
+          >
+            Read More
+          </Button>
         </Card>
       ))}
     </Row>

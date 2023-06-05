@@ -89,7 +89,13 @@
     }
   }
 
-  
+  .news-details_footer{
+    border: 1px solid var(--border-light-green);
+    background-color: #eeeeee !important;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: smaller;
+  }
 
 
   .navlink{

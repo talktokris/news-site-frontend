@@ -26,6 +26,8 @@ function App() {
   const restoreUser = async () => {
     const user = await auth.getCurrentUser();
     if (user) setUser(user);
+
+    //console.log(user);
   };
   function loaderRun(value) {
     setShowLoader(value);
@@ -43,7 +45,10 @@ function App() {
             path="/register"
             element={<Register loaderRun={loaderRun} />}
           />
-          <Route path="/account" element={<Account loaderRun={loaderRun} />} />
+          <Route
+            path="/account"
+            element={<Account user={user} loaderRun={loaderRun} />}
+          />
           <Route path="/logout" element={<Logout loaderRun={loaderRun} />} />
           <Route path="/" element={<Navigate to="home" />} />
         </Routes>
